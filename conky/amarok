@@ -1,0 +1,41 @@
+#!/usr/bin/env python
+
+import dbus
+import sys
+import commands
+
+running=commands.getstatusoutput("pidof amarok")
+if running[0] == 0: 
+    bus = dbus.SessionBus()
+    obj = bus.get_object('org.mpris.amarok', '/Player')
+    mtd = obj.get_dbus_method('GetMetadata', 'org.freedesktop.MediaPlayer')
+    nfo = mtd()
+    stt = obj.get_dbus_method('GetStatus', 'org.freedesktop.MediaPlayer')
+    nfo_two = stt()
+
+    if sys.argv[1]=="-s":
+        if nfo_two[0] == 0:
+            print "Playing"
+        elif nfo_two[0] == 1:
+            print "Paused"
+        elif nfo_two[0] == 2:
+            print "Stopped"
+
+    if nfo_two[0]==0:
+        if sys.argv[1]=="-t":
+            if nfo.has_key('title'):
+                print nfo['title']
+        if sys.argv[1]=="-a":
+            if nfo['artist'] != "":         
+                print nfo['artist']
+        if sys.argv[1]=="-m":
+            if nfo['album']  != "":         
+                print nfo['album']
+
+    if sys.argv[1]=="-p" and nfo_two[0]==0:
+        a = obj.get_dbus_method('PositionGet', 'org.freedesktop.MediaPlayer')
+        b = a()
+        print float(b) / float(nfo['mtime']) * 100
+        
+else:
+    print "Amarok is not running"
