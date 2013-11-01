@@ -9,28 +9,28 @@ then
 # add m 1 because it was picking up [virus] containment
     feh --bg-scale "`grep -m 1 'wallpaper=' ~/.kde/share/config/plasma-desktop-appletsrc | tail --bytes=+11`/contents/images/1920x1200.png"
 # Stats Bar
-    conky -d -c /home/skipper/conkyfiles/sysstats
+    conky -d -c /home/skipper/src/scripts/conky/sysstats
 # To Do
-#    sleep 1 && conky -d -c /home/skipper/conkyfiles/todolist &
+#    sleep 1 && conky -d -c /home/skipper/src/scripts/conky/todolist &
 # Events
-#sleep 1 && conky -d -c /home/skipper/conkyfiles/events &
+#sleep 1 && conky -d -c /home/skipper/src/scripts/conky/events &
 # Time
-#    sleep 1 && conky -d -c /home/skipper/conkyfiles/time &
+#    sleep 1 && conky -d -c /home/skipper/src/scripts/conky/time &
 # Date and Calendar
-#    sleep 1 && conky -d -c /home/skipper/conkyfiles/calendar &
+#    sleep 1 && conky -d -c /home/skipper/src/scripts/conky/calendar &
 else
     sleep 10 &&
     feh --bg-scale "`grep -m 1 'wallpaper=' ~/.kde/share/config/plasma-desktop-appletsrc | tail --bytes=+11`/contents/images/1920x1200.png"
 #    exec awn &
 # Stats Bar
-    conky -d -c /home/skipper/conkyfiles/sysstats
+    conky -d -c /home/skipper/src/scripts/conky/sysstats
 # To Do
-#    sleep 1 && conky -d -c /home/skipper/conkyfiles/todolist &
+#    sleep 1 && conky -d -c /home/skipper/src/scripts/conky/todolist &
 # Events
-#sleep 1 && conky -d -c /home/skipper/conkyfiles/events &
+#sleep 1 && conky -d -c /home/skipper/src/scripts/conky/events &
 # Time
-#    sleep 1 && conky -d -c /home/skipper/conkyfiles/time &
+#    sleep 1 && conky -d -c /home/skipper/src/scripts/conky/time &
 # Date and Calendar
-#    sleep 1 && conky -d -c /home/skipper/conkyfiles/calendar &
+#    sleep 1 && conky -d -c /home/skipper/src/scripts/conky/calendar &
     exit
 fi
