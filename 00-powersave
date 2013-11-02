@@ -1,0 +1,69 @@
+# install to /etc/pm/power.d/00-powersave
+
+case $1 in
+  true)
+ 
+    # Running on battery
+ 
+    # Disable the NMI watchdog
+    echo 0 > /proc/sys/kernel/watchdog
+ 
+    # Reduce power for SATA link power management
+    for i in 0 1 2 3 4 5 ; do
+        echo min_power>/sys/class/scsi_host/host${i}/link_power_management_policy
+    done
+ 
+    # Runtime power-management for PCI devices
+    for i in /sys/bus/pci/devices/*/power/control ; do
+        echo auto > ${i}
+    done
+ 
+    # Runtime power-management for USB devices
+    for i in /sys/bus/usb/devices/*/power/control ; do
+        echo auto > ${i}
+    done
+ 
+    # Disable Wake-on-LAN and ethernet port
+    # ethtool -s eth0 wol d
+    # ifconfig eth0 down
+ 
+    # Use the "ondemand" CPU governor
+    for i in /sys/devices/system/cpu/cpu?/cpufreq/scaling_governor ; do
+        echo ondemand > ${i}
+    done
+ 
+    # Reduce the VM write-back timeout
+    sleep 1000 && echo 1500 > /proc/sys/vm/dirty_writeback_centisecs
+ 
+  ;;
+  false)
+ 
+    # Running on charger
+ 
+    # Enable the NMI watchdog
+    echo 1 > /proc/sys/kernel/watchdog
+ 
+    # Increase the VM write-back timeout
+    echo 60000 > /proc/sys/vm/dirty_writeback_centisecs
+ 
+    # Change power-saving for SATA devices
+    for i in 0 1 2 3 4 5 ; do
+        echo min_power>/sys/class/scsi_host/host${i}/link_power_management_policy
+    done
+ 
+    # Enable full power for PCI devices
+    for i in /sys/bus/pci/devices/*/power/control ; do
+        echo on > ${i}
+    done
+ 
+    # Enable Wake-on-LAN and ethernet port
+    # ethtool -s eth0 wol g
+    # ifconfig eth0 up
+ 
+    # Use the "ondemand" CPU governor
+    for i in /sys/devices/system/cpu/cpu?/cpufreq/scaling_governor ; do
+          echo ondemand > ${i}
+    done
+  ;;
+esac
+exit 0
