@@ -4,6 +4,9 @@ case $1 in
   true)
  
     # Running on battery
+    #
+
+    killall conky
  
     # Disable the NMI watchdog
     echo 0 > /proc/sys/kernel/watchdog
