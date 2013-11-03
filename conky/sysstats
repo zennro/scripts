@@ -4,7 +4,7 @@
 own_window yes
 own_window_type override
 own_window_transparent yes
-#own_window_colour 000000
+own_window_colour A0A0A0
 own_window_hints undecorated, below,sticky,skip_taskbar,skip_pager
  
 # Use double buffering (reduces flicker, may not work for everyone)
@@ -56,7 +56,7 @@ alignment bottom_left
  
 # Gap between borders of screen
 gap_x 17
-gap_y 200
+gap_y 85
 
 
 # Possible variables to be used:
@@ -214,8 +214,8 @@ ${voffset -15}
 ${color #f55368}${font A bite:size=24}AMAROK
 ${voffset -31}${hr 2}$font $color
 ${if_running amarok}
-Status $alignr ${execi 5 ~/scripts/amarok -s}
-Track $alignr ${execi 5 ~/scripts/amarok -t}
-Artist $alignr ${execi 5 ~/scripts/amarok -a}
-Album $alignr ${execi 5 ~/scripts/amarok -m} $endif
-${execbar ~/scripts/amarok -p}
+Status $alignr ${execi 5 ~/src/scripts/amarok -s}
+Track $alignr ${execi 5 ~/src/scripts/amarok -t}
+Artist $alignr ${execi 5 ~/src/scripts/amarok -a}
+Album $alignr ${execi 5 ~/src/scripts/amarok -m} $endif
+${execbar ~/src/scripts/amarok -p}
