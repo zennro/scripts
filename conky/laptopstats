@@ -170,7 +170,6 @@ $sysname $kernel $alignr $machine
 Intel Core 2 Quad $alignr${freq_g cpu0}Ghz
 Uptime $alignr${uptime_short}
 File System $alignr${fs_type}
-HD Temp $alignr${execi 300 hddtemp -u F /dev/sda | awk '{print $3}'}
 
 ${voffset -15}
 ${color #000000}${font A bite:size=24}PROCESSOR
