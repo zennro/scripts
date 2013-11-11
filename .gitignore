@@ -1,0 +1,6 @@
+backup.cfg
+exclude
+cipher.py
+*.pyc
+*.gpg
+*.swp
