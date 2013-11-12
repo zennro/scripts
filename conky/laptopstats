@@ -205,5 +205,8 @@ ${if_running amarok}
 Status $alignr ${execi 5 ~/src/scripts/amarok -s}
 Track $alignr ${execi 5 ~/src/scripts/amarok -t}
 Artist $alignr ${execi 5 ~/src/scripts/amarok -a}
-Album $alignr ${execi 5 ~/src/scripts/amarok -m} $endif
+Album $alignr ${execi 5 ~/src/scripts/amarok -m} 
 ${execbar ~/src/scripts/amarok -p}
+${else}
+Amarok is not running.
+$endif
