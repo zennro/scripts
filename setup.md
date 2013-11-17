@@ -1,7 +1,5 @@
 # New System Setup
 
-These are the steps I need to take and packages that I need to install to do my daily work right now. This includes development work in various languages, research projects, and day-to-day computing. This is as much for me as for anyone else. If you don't know what a command or package does, don't run it or install it.
-
 This setup is for a freshly installed [Kubuntu 13.10](http://www.kubuntu.org/getkubuntu) on a [Lenovo Yoga 13 laptop](http://www.amazon.com/gp/product/B00ATANVLG/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B00ATANVLG&linkCode=as2&tag=scistapro-20).
 
 ## Common Install
@@ -14,7 +12,7 @@ This setup is for a freshly installed [Kubuntu 13.10](http://www.kubuntu.org/get
 
 ## Lenovo Yoga 13 Only 
 
-### Wi-Fi and Bluetooth until supported by kernel
+#### Wi-Fi and Bluetooth until supported by kernel
 
     cd ~/scratch
 
@@ -30,7 +28,7 @@ This setup is for a freshly installed [Kubuntu 13.10](http://www.kubuntu.org/get
     sudo make install
     cd ~
 
-### Brightness Controls
+#### Brightness Controls
 
 Edit
 
@@ -101,7 +99,14 @@ This is a big install!
 
 ## Security
 
-    https://help.github.com/articles/generating-ssh-keys
+#### SSH Keys
+
+    cd ~/.ssh
+    ssh-keygen -t rsa - C "email@domain.com"
+    ssh-add id_rsa
+
+#### GPG Keys
+
     gpg --gen-key
     gpg --armor --output .gnupg/skipperkey.asc --export
 
@@ -118,7 +123,7 @@ This is a big install!
     
 Add `7 10 cleanup.weekly /home/skipper/src/scripts/clean_scratch.sh` to `/etc/anacrontab`
 
-## Bashmarks
+## [Bashmarks](http://www.huyng.com/projects/bashmarks/)
 
 Bookmark directories for the shell.
 
@@ -144,29 +149,29 @@ Setup directory structure
 
     mkdir -p ~/.vim/autoload ~/.vim/bundle ~/.vim/ftplugin
 
-### Pathogen: easy package management in vim
+#### [Pathogen](http://www.vim.org/scripts/script.php?script_id=2332): easy package management in vim
 
     curl -Sso ~/.vim/autoload/pathogen.vim \
         https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
     cd ~/.vim/bundle
 
-### sensible.vim: Defaults everyone can agree on.
+#### [sensible.vim]http://www.vim.org/scripts/script.php?script_id=4391(): Defaults everyone can agree on.
 
     git clone git://github.com/tpope/vim-sensible.git
 
-### Markdown syntax support for vim.
+#### [Markdown](http://www.vim.org/scripts/script.php?script_id=2882) syntax support for vim.
 
     git clone https://github.com/hallison/vim-markdown.git
 
-### LaTeX suite tools for vim.
+#### [LaTeX suite](http://vim-latex.sourceforge.net/) tools for vim.
 
     git clone git://git.code.sf.net/p/vim-latex/vim-latex
     
-### fugitive.vim: support for git in vim
+#### [fugitive.vim](http://www.vim.org/scripts/script.php?script_id=2975): support for git in vim
 
     git clone https://github.com/tpope/vim-fugitive.git
 
-### Command-t: Fast file navigation for vim.
+#### [Command-t](https://wincent.com/products/command-t): Fast file navigation for vim.
 
     git clone git://git.wincent.com/command-t.git
     cd command-t/ruby/command-t
@@ -174,7 +179,7 @@ Setup directory structure
     ruby extconf.rb && make
     cd ../../../
 
-### snipMate: TextMate style snippets for vim.
+#### [snipMate](http://www.vim.org/scripts/script.php?script_id=2540): TextMate style snippets for vim.
 
     git clone https://github.com/msanders/snipmate.vim
     echo -e "snippet ipdb\n\timport ipdb; ipdb.set_trace()" >> snipmate.vim/snippets/python.snippets
@@ -194,11 +199,11 @@ This remaps from TAB to CTRL+Return.
 
     cd ../bundle
 
-### gnupg: plugin for editing gpg encrypted files
+#### [gnupg](http://www.vim.org/scripts/script.php?script_id=3645): plugin for editing gpg encrypted files
 
     git clone https://github.com/jamessan/vim-gnupg
 
-### PyDiction: Tab-complete Python code
+#### [PyDiction](http://www.vim.org/scripts/script.php?script_id=850): Tab-complete Python code
 
     git clone https://github.com/rkulla/pydiction.git
 
@@ -209,13 +214,13 @@ After installing the Python modules you commonly use, update the autocomplete di
 
     cd ~
 
-### Custom ftplugins
+#### Custom ftplugins
 
 Add my own custom ftplugins that are kept on github
 
     ln -s ~/src/dotfiles/vim/ftplugin/* ~/.vim/ftplugin/
 
-## Conky
+## [Conky](http://conky.sourceforge.net/)
 
     cd ~/scratch/
     wget -O abite.zip http://img.dafont.com/dl/?f=a_bite
@@ -223,7 +228,7 @@ Add my own custom ftplugins that are kept on github
     xdg-open ABITE.ttf
     cd ~
 
-## Choqok
+## [Choqok](http://choqok.gnufolks.org/) KDE Microblog client
 
 As of 1.3 Choqok still uses the Twitter 1.0 API, so you need to install from source.
 
@@ -257,7 +262,7 @@ These are all packages I like to build from source to stay close to the bleeding
     git clone git@github.com:jseabold/gensim gensim-skipper && cd gensim-skipper && git remote add upstream git://github.com/piskvorky/gensim && cd ..
     git clone https://github.com/discoproject/disco
 
-### IPython
+### [IPython](http://ipython.org/)
 
     sudo apt-get install libzmq-dev pandoc python-tk
     pip install --user pyzmq jinja2 tornado
@@ -271,9 +276,9 @@ These are all packages I like to build from source to stay close to the bleeding
     pip install --user ipdb
     pip install --user ipdbplugin
 
-### Numpy
+### [Numpy](http://www.numpy.org/)
 
-#### OpenBLAS
+#### [OpenBLAS](http://www.openblas.net/)
 
     cd src
     git clone git://github.com/xianyi/OpenBLAS
@@ -285,7 +290,7 @@ Add the location of these library files to the end of the following files to mak
 
     sudo gvim /etc/ld.so.conf
 
-#### SuiteSparse
+#### [SuiteSparse](https://www.cise.ufl.edu/research/sparse/SuiteSparse/)
 
     cd src/
     wget http://www.cise.ufl.edu/research/sparse/SuiteSparse/SuiteSparse-4.2.1.tar.gz
@@ -329,7 +334,7 @@ Don't rely on HOME (~) expansion in site.cfg
     python setup.py build &> build.log
     sudo python setup.py install
 
-### SciPy
+### [SciPy](http://www.scipy.org/)
 
 Dependencies (not already installed)
 
@@ -342,7 +347,7 @@ For UMFPACK support
     python setup.py build
     sudo python setup.py install
 
-### Matplotlib
+### [Matplotlib](http://matplotlib.org/)
 
     pip install --user pyparsing
     pip install --user python-dateutil
@@ -350,7 +355,7 @@ For UMFPACK support
     python setup.py build
     sudo python setup.py install
 
-### Pandas
+### [Pandas](http://pandas.pydata.org/)
 
 (Optional) Dependencies
 
@@ -358,11 +363,11 @@ Excel Support
 
     pip install --user openpyxl xlrd xlwt
 
-Amazon S3 Support. This will need to be configured with your Amazon credentials.
+[Boto](http://docs.pythonboto.org/en/latest/): Amazon S3 Support. This will need to be configured with your Amazon credentials.
 
     pip install --user boto
 
-NumExpr
+[NumExpr](https://code.google.com/p/numexpr/): Fast numerical array expression evaluator for Python and NumPy
 
     cd ~/src/
     hg clone https://code.google.com/p/numexpr/
@@ -371,7 +376,7 @@ NumExpr
     sudo python setup.py install
 
 
-PyTables (depends on NumExpr)
+[PyTables](http://www.pytables.org/moin) (depends on NumExpr): package for managing hierarchical datasets and designed to efficiently and easily cope with extremely large amounts of data.
 
     sudo apt-get install libhdf5-dev liblzo2-dev libbz2-dev
     cd ~/src/
@@ -380,7 +385,7 @@ PyTables (depends on NumExpr)
     python setup.py build
     sudo python setup.py install
 
-Bottleneck
+[Bottleneck](http://berkeleyanalytics.com/bottleneck/): Fast NumPy array funtions written in Cython
 
     cd ~/src/
     git clone git://github.com/kwgoodman/bottleneck
@@ -394,7 +399,7 @@ Build/Install pandas
     python setup.py build
     sudo python setup.py install
 
-### Statsmodels
+### [Statsmodels](http://statsmodels.sourceforge.net/): Statistics in Python
 
     cd ~/statsmodels
     git clone git@github.com:statsmodels/statsmodels.git
@@ -404,17 +409,28 @@ Build/Install pandas
     python setup.py build_ext --inplace
     sudo python setup.py install
 
-### scikit-learn
+### [scikit-learn](http://scikit-learn.org/stable/): machine learning in Python
 
     cd ~/src/scikit-learn
     python setup.py build
     sudo python setup.py install
 
-### starcluster
+### [starcluster](http://star.mit.edu/cluster/): cluster-computing toolkit for AMazon EC2
+
+    cd ~/src/
+    git clone git://github.com/jtriley/StarCluster.git
+    cd StarCluster
+
+Last Stable release
+
+    git checkout 0.94.2
+    sudo python setup.py install
+    
+[Setup your config file](http://star.mit.edu/cluster/docs/latest/quickstart.html) with SSH Keys, AWS Credentials, etc. [Setup for use with IPython](http://star.mit.edu/cluster/docs/latest/plugins/ipython.html#ipython-cluster-plugin).
 
 ## NLP / Text Processing
 
-### NLTK
+### [NLTK](http://nltk.org/) Natural Language Toolkit
 
     sudo apt-get install libyaml-dev
     pip install --user pyyaml nltk 
@@ -424,7 +440,7 @@ Build/Install pandas
     python setup.py build
     sudo python setup.py install
 
-### fuzzywuzzy
+### [fuzzywuzzy](https://github.com/seatgeek/fuzzywuzzy): Fuzzy string matching like a boss
 
 Fuzzy string matching library
 
@@ -435,7 +451,7 @@ Fuzzy string matching library
     python setup.py build
     sudo python setup.py install
 
-### Snowball Stemmer
+### [Snowball Stemmer](http://snowball.tartarus.org/)
 
     pip install --user PyStemmer
 
@@ -459,6 +475,8 @@ Build/Install R
     make
     make check
     sudo make install
+
+Rprofile settings.
 
     ln -s ~/src/dotfiles/.Rprofile ~/.Rprofile
 
@@ -484,11 +502,11 @@ I like to have the source of some packages I use available to muck around in
     R CMD INSTALL textir_1.8-8.tar.gz
     tar -xvf textir*
 
-### Rpy2
+### [Rpy2](http://rpy.sourceforge.net/rpy2.html)
 
     pip install --user rpy2
 
-## Gretl
+## [Gretl](http://gretl.sourceforge.net/) Gnu Regression, Econometrics, and Time-series Library
 
 Dependencies (not yet installed above)
 
@@ -537,7 +555,7 @@ Build/Install Gretl
 
 ## Graph Theory / Networks
 
-### igraph
+### [igraph](http://igraph.sourceforge.net/)
 
     cd ~/src/
     wget --content-disposition http://sourceforge.net/projects/igraph/files/C%20library/0.6.5/igraph-0.6.5.tar.gz/download
@@ -551,14 +569,14 @@ Build/Install Gretl
     cd ~
     pip install --user python-igraph
 
-### networkx
+### [networkx](http://networkx.github.io/)
 
     cd ~/src/networkx-skipper
     python setup.py build
     sudo python setup.py install
 
 
-## Dropbox
+## [Dropbox](https://db.tt/LLAHiF9s)
 
     cd ~/src/
     wget -O dropbox.tar.gz http://www.getdropbox.com/download?plat=lnx.x86_64
@@ -607,7 +625,7 @@ For testing development packages on 32-bit.
 
 ## Backups
 
-### s3fs
+### [s3fs](https://code.google.com/p/s3fs/wiki/FuseOverAmazon) FUSE-based file system backed by Amazon S3
 
 Backuping files to Amazon S3 using s3fs. Note that this is pretty slow for use with many small files. I might consider exploring [s3curl](https://aws.amazon.com/code/128) in the future. You might also considering compressing directories to separate tarballs. I suspect that performance- and cost-wise this would be more efficient, though obviously not bandwidth-wise.
 
@@ -641,6 +659,7 @@ Create a bucket using the AWS console or your tool of choice.
 
 Create a backup script. On KDE the `kdialog` command will send a notification to a user.
 
+    :::bash
     #! /bin/bash
 
     if [[ $1 == "test" ]]; then
