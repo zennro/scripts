@@ -155,15 +155,15 @@ Setup directory structure
         https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
     cd ~/.vim/bundle
 
-#### [sensible.vim]http://www.vim.org/scripts/script.php?script_id=4391(): Defaults everyone can agree on.
+#### [sensible.vim](http://www.vim.org/scripts/script.php?script_id=4391): Defaults everyone can agree on
 
     git clone git://github.com/tpope/vim-sensible.git
 
-#### [Markdown](http://www.vim.org/scripts/script.php?script_id=2882) syntax support for vim.
+#### [Markdown](http://www.vim.org/scripts/script.php?script_id=2882) syntax support for vim
 
     git clone https://github.com/hallison/vim-markdown.git
 
-#### [LaTeX suite](http://vim-latex.sourceforge.net/) tools for vim.
+#### [LaTeX suite](http://vim-latex.sourceforge.net/) tools for vim
 
     git clone git://git.code.sf.net/p/vim-latex/vim-latex
     
@@ -171,7 +171,7 @@ Setup directory structure
 
     git clone https://github.com/tpope/vim-fugitive.git
 
-#### [Command-t](https://wincent.com/products/command-t): Fast file navigation for vim.
+#### [Command-t](https://wincent.com/products/command-t): Fast file navigation for vim
 
     git clone git://git.wincent.com/command-t.git
     cd command-t/ruby/command-t
@@ -179,7 +179,7 @@ Setup directory structure
     ruby extconf.rb && make
     cd ../../../
 
-#### [snipMate](http://www.vim.org/scripts/script.php?script_id=2540): TextMate style snippets for vim.
+#### [snipMate](http://www.vim.org/scripts/script.php?script_id=2540): TextMate style snippets for vim
 
     git clone https://github.com/msanders/snipmate.vim
     echo -e "snippet ipdb\n\timport ipdb; ipdb.set_trace()" >> snipmate.vim/snippets/python.snippets
