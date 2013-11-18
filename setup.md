@@ -110,7 +110,7 @@ This is a big install!
     gpg --gen-key
     gpg --armor --output .gnupg/skipperkey.asc --export
 
-## Config Files and Scripts
+## [Config Files](https://github.com/jseabold/dotfiles) and [Scripts](https://github.com/jseabold/scripts)
 
     cd ~
     cd src
@@ -128,8 +128,9 @@ Add `7 10 cleanup.weekly /home/skipper/src/scripts/clean_scratch.sh` to `/etc/an
 Bookmark directories for the shell.
 
     cd ~/src/
+    git clone https://github.com/huyng/bashmarks
+    cd bashmarks
     make install
-    git clone http://www.huyng.com/projects/bashmarks/
 
 Make sure `bashmarks.sh` is sourced in your `.bashrc` file.
 
@@ -155,15 +156,15 @@ Setup directory structure
         https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
     cd ~/.vim/bundle
 
-#### [sensible.vim]http://www.vim.org/scripts/script.php?script_id=4391(): Defaults everyone can agree on.
+#### [sensible.vim](http://www.vim.org/scripts/script.php?script_id=4391): Defaults everyone can agree on
 
     git clone git://github.com/tpope/vim-sensible.git
 
-#### [Markdown](http://www.vim.org/scripts/script.php?script_id=2882) syntax support for vim.
+#### [Markdown](http://www.vim.org/scripts/script.php?script_id=2882) syntax support for vim
 
     git clone https://github.com/hallison/vim-markdown.git
 
-#### [LaTeX suite](http://vim-latex.sourceforge.net/) tools for vim.
+#### [LaTeX suite](http://vim-latex.sourceforge.net/) tools for vim
 
     git clone git://git.code.sf.net/p/vim-latex/vim-latex
     
@@ -171,7 +172,7 @@ Setup directory structure
 
     git clone https://github.com/tpope/vim-fugitive.git
 
-#### [Command-t](https://wincent.com/products/command-t): Fast file navigation for vim.
+#### [Command-t](https://wincent.com/products/command-t): Fast file navigation for vim
 
     git clone git://git.wincent.com/command-t.git
     cd command-t/ruby/command-t
@@ -179,7 +180,7 @@ Setup directory structure
     ruby extconf.rb && make
     cd ../../../
 
-#### [snipMate](http://www.vim.org/scripts/script.php?script_id=2540): TextMate style snippets for vim.
+#### [snipMate](http://www.vim.org/scripts/script.php?script_id=2540): TextMate style snippets for vim
 
     git clone https://github.com/msanders/snipmate.vim
     echo -e "snippet ipdb\n\timport ipdb; ipdb.set_trace()" >> snipmate.vim/snippets/python.snippets
@@ -342,6 +343,8 @@ For UMFPACK support
 
     sudo apt-get install swig
 
+Build/Install SciPy
+
     cd ~/src/scipy-skipper
     cp ~/src/numpy-skipper/site.cfg 
     python setup.py build
@@ -415,7 +418,7 @@ Build/Install pandas
     python setup.py build
     sudo python setup.py install
 
-### [starcluster](http://star.mit.edu/cluster/): cluster-computing toolkit for AMazon EC2
+### [starcluster](http://star.mit.edu/cluster/): cluster-computing toolkit for Amazon EC2
 
     cd ~/src/
     git clone git://github.com/jtriley/StarCluster.git
@@ -557,17 +560,24 @@ Build/Install Gretl
 
 ### [igraph](http://igraph.sourceforge.net/)
 
+Build the source
+
     cd ~/src/
-    wget --content-disposition http://sourceforge.net/projects/igraph/files/C%20library/0.6.5/igraph-0.6.5.tar.gz/download
-    tar -xvf igraph-*
+    git clone git://github.com/igraph/igraph
     cd igraph
+    sudo apt-get install libtool
+    ./bootstrap.sh
     ./configure
     make
     sudo make install
     make clean && make distclean
-    
+
+Install the Python package
+
+    cd interfaces/python
+    python setup.py build
+    sudo python setup.py install
     cd ~
-    pip install --user python-igraph
 
 ### [networkx](http://networkx.github.io/)
 
