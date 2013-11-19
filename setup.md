@@ -120,6 +120,7 @@ This is a big install!
     git clone git@github.com:jseabold/dotfiles
     ln -s ~/src/dotfiles/.bashrc ~/
     ln -s ~/src/dotfiles/.vimrc ~/
+    ln -s ~/src/dotfiles/.pystartup ~/
     
 Add `7 10 cleanup.weekly /home/skipper/src/scripts/clean_scratch.sh` to `/etc/anacrontab`
 
@@ -487,7 +488,7 @@ Rprofile settings.
 
 Install some often used default packages
 
-    Rscript -e "install.packages(c('car', 'systemfit', 'plyr', 'stringr', 'ggplot2', 'RColorBrewer', 'vars'))"
+    Rscript -e "install.packages(c('car', 'systemfit', 'plyr', 'stringr', 'ggplot2', 'RColorBrewer', 'vars', 'forecast'))"
 
 
 I like to have the source of some packages I use available to muck around in
