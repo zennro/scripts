@@ -73,6 +73,7 @@ This is a big install!
     pip install --user virtualenv
     pip install --user coverage
     pip install --user mechanize
+    pip install --user regex
 
 ## Git Config
 
@@ -121,9 +122,8 @@ This is a big install!
     ln -s ~/src/dotfiles/.bashrc ~/
     ln -s ~/src/dotfiles/.vimrc ~/
     ln -s ~/src/dotfiles/.pystartup ~/
+    sudo ln -s ~/src/scripts/clean_scratch.sh /etc/cron.weekly/
     
-Add `7 10 cleanup.weekly /home/skipper/src/scripts/clean_scratch.sh` to `/etc/anacrontab`
-
 ## [Bashmarks](http://www.huyng.com/projects/bashmarks/)
 
 Bookmark directories for the shell.
@@ -432,6 +432,16 @@ Last Stable release
     
 [Setup your config file](http://star.mit.edu/cluster/docs/latest/quickstart.html) with SSH Keys, AWS Credentials, etc. [Setup for use with IPython](http://star.mit.edu/cluster/docs/latest/plugins/ipython.html#ipython-cluster-plugin).
 
+## [seaborn](http://stanford.edu/~mwaskom/software/seaborn/): statistical data visualization
+
+    cd ~/src/
+    git clone https://github.com/mwaskom/seaborn
+
+## [ggplot](https://github.com/yhat/ggplot/blob/master/README.md): ggplot for python
+
+    cd ~/src/
+    git clone https://github.com/yhat/ggplot/
+
 ## NLP / Text Processing
 
 ### [NLTK](http://nltk.org/) Natural Language Toolkit
@@ -488,7 +498,7 @@ Rprofile settings.
 
 Install some often used default packages
 
-    Rscript -e "install.packages(c('car', 'systemfit', 'plyr', 'stringr', 'ggplot2', 'RColorBrewer', 'vars', 'forecast'))"
+    Rscript -e "install.packages(c('car', 'systemfit', 'plyr', 'stringr', 'ggplot2', 'RColorBrewer', 'vars', 'forecast', 'zoo', 'gtools'))"
 
 
 I like to have the source of some packages I use available to muck around in
@@ -694,4 +704,4 @@ Make it executable
 
 Since this is a laptop, you can add this to anacron, so that it will run the next time your machine is on according to some schedule. I added the following to `/etc/anacrontab`
 
-    7 10 backup.weekly /home/skipper/src/scripts/s3backup.sh
+    sudo ln -s ~/src/scripts/s3backup.sh /etc/cron.weekly/
