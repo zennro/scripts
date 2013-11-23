@@ -42,6 +42,7 @@ then
 fi
 emulate_background
 conky_start laptopstats
+conky_start clock
 
 #################
 ##   Dropbox   ##
