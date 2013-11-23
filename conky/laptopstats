@@ -179,14 +179,14 @@ CPU2  ${cpu cpu1}% ${color #a6a6a6}${cpubar cpu1}$color
 CPU3  ${cpu cpu2}% ${color #a6a6a6}${cpubar cpu2}$color
 CPU4  ${cpu cpu3}% ${color #a6a6a6}${cpubar cpu3}$color
 
-${color #000000} ${font A bite:size=24}MEM DISK
+${color #000000} ${font A bite:size=24}FINITE
 ${voffset -33}${hr 2}$font $color
 RAM: $alignc $mem / $memmax $alignr $memperc%
 ${color #a6a6a6}$membar$color
 SWAP: $alignc $swap / $swapmax $alignr $swapperc%
 ${color #a6a6a6}$swapbar$color
 / $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
-${color #a6a6a6}$fs_bar /}$color
+${color #a6a6a6}${fs_bar /}$color
 
 ${color #000000}${font A bite:size=24}NETWORK
 ${voffset -31}${hr 2}$font $color
