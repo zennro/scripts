@@ -26,7 +26,7 @@ function emulate_background {
     # for background transparency emulation. uncomment if using a wallpaper
     # add m 1 because it was picking up [virus] containment
     local fname=~/.kde/share/config/plasma-desktop-appletsrc
-    local wallapper=/contents/images/1920x1200.png
+    local wallpaper=/contents/images/1920x1200.png
     feh --bg-scale "`grep -m 1 'wallpaper=' $fname | tail --bytes=+11`$wallpaper"
 }
 
