@@ -617,9 +617,11 @@ Set it up
 
     ./dropboxd 
 
-## Autostart Script
+## Autostart Scripts
 
-    ln -s ~/src/scripts/autostart.sh ~/.kde/Autostart/
+    ln -s ~/src/scripts/conky_start.sh ~/.kde/Autostart/
+    ln -s ~/src/scripts/choqok_start.sh ~/.kde/Autostart/
+    ln -s ~/src/scripts/dropbox_start.sh ~/.kde/Autostart/
 
 ## 32-bit chroot environment
 
