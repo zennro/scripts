@@ -11,7 +11,7 @@ function emulate_background {
     # add m 1 because it was picking up [virus] containment
     local fname=~/.kde/share/config/plasma-desktop-appletsrc
     local wallpaper=/contents/images/1920x1200.png
-    feh --bg-scale "`grep -m 1 'wallpaper=' $fname | tail --bytes=+11`$wallpaper"
+    feh --bg-scale "`grep -m 1 'wallpaper=' $fname | tail --bytes=+11`"
 }
 
 function conky_start {

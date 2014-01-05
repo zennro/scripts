@@ -3,7 +3,7 @@
 # Create own window instead of using desktop (required in nautilus)
 own_window yes
 own_window_type override
-own_window_transparent no
+own_window_transparent yes
 own_window_colour A0A0A0
 own_window_hints undecorated, below,sticky,skip_taskbar,skip_pager
  
