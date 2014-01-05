@@ -67,13 +67,8 @@ This is a big install!
 
     sudo apt-get install libxml2-dev libxslt1-dev zlib1g-dev
     pip install --user lxml beautifulsoup4 html5lib
-    pip install --user nose
-    pip install --user sphinx
-    pip install --user cython
-    pip install --user virtualenv
-    pip install --user coverage
-    pip install --user mechanize
-    pip install --user regex
+    pip install --user nose sphinx cython virtualenv coverage mechanize regex\
+                       requests keyring
 
 ## Git Config
 
@@ -122,8 +117,10 @@ This is a big install!
     ln -s ~/src/dotfiles/.bashrc ~/
     ln -s ~/src/dotfiles/.vimrc ~/
     ln -s ~/src/dotfiles/.pystartup ~/
-    sudo ln -s ~/src/scripts/clean_scratch.sh /etc/cron.weekly/
-    
+    sudo ln -s ~/src/scripts/clean_scratch.sh /etc/cron.weekly/clean_scratch
+
+Make sure not to include any periods in the symlink name in the cron folder.
+
 ## [Bashmarks](http://www.huyng.com/projects/bashmarks/)
 
 Bookmark directories for the shell.
@@ -141,6 +138,7 @@ Common keyboard shortcuts I use
 
     ctrl+shift+i -> browser
     alt+g -> gvim
+    alt+d -> dolphin
     alt+k -> konsole
     alt+m -> move window
     meta+m -> minimize window
@@ -212,7 +210,7 @@ This remaps from TAB to CTRL+Return.
 After installing the Python modules you commonly use, update the autocomplete dictionary
 
     cd ~/.vim/bundle/pydiction
-    python pydiction.py numpy scipy pandas statsmodels matplotlib
+    python pydiction.py numpy scipy pandas statsmodels matplotlib sklearn
 
     cd ~
 
@@ -469,6 +467,17 @@ Fuzzy string matching library
 
     pip install --user PyStemmer
 
+### [pattern](http://www.clips.ua.ac.be/pages/pattern)
+
+    pip install --user pattern
+
+### gensim
+
+    cd ~/src/gensim
+    python setup.py build
+    sudo python setup.py install
+    cd ~
+
 ## R
 
 Dependencies
@@ -498,7 +507,7 @@ Rprofile settings.
 
 Install some often used default packages
 
-    Rscript -e "install.packages(c('car', 'systemfit', 'plyr', 'stringr', 'ggplot2', 'RColorBrewer', 'vars', 'forecast', 'zoo', 'gtools'))"
+    Rscript -e "install.packages(c('car', 'systemfit', 'plyr', 'stringr', 'ggplot2', 'RColorBrewer', 'vars', 'forecast', 'zoo', 'gtools', 'gamlr', 'distrom'))"
 
 
 I like to have the source of some packages I use available to muck around in
@@ -704,4 +713,6 @@ Make it executable
 
 Since this is a laptop, you can add this to anacron, so that it will run the next time your machine is on according to some schedule. I added the following to `/etc/anacrontab`
 
-    sudo ln -s ~/src/scripts/s3backup.sh /etc/cron.weekly/
+    sudo ln -s ~/src/scripts/s3backup.sh /etc/cron.weekly/s3backup
+
+Make sure not to include any periods in the symlink name in the cron folder.
