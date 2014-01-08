@@ -65,7 +65,7 @@ This is a big install!
 
 ## Pip Installs
 
-    sudo apt-get install libxml2-dev libxslt1-dev zlib1g-dev
+    sudo apt-get install libxml2-dev libxslt1-dev zlib1g-dev graphviz
     pip install --user lxml beautifulsoup4 html5lib
     pip install --user nose sphinx cython virtualenv coverage mechanize regex\
                        requests keyring
