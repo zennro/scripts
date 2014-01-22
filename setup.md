@@ -56,7 +56,7 @@ Add `blacklist ideapad_laptop`
 
 This is a big install!
 
-    sudo apt-get install texlive texlive-xetex texlive-fonts-extra lyx
+    sudo apt-get install texlive texlive-xetex texlive-fonts-extra lyx latexmk
 
 
 ## Python Setup
@@ -701,13 +701,13 @@ Create a backup script. On KDE the `kdialog` command will send a notification to
         /usr/bin/s3fs your-bucket-name /mnt/backup/s3 -ouse_cache=/tmp
         BACKUP_DIR=/mnt/backup/s3/
     fi
-    kdialog "Your S3 backup job has started" 5
+    kdialog --passivepopup "Your S3 backup job has started" 5
     /usr/bin/rsync -avrz --delete --inplace --stats --partial --log-file=log.file --exclude-from=/path/to/exclude --files-from=/path/to/include/backup.files /home/username/ $BACKUP_DIR
     mv log.file backup.log.`date +"%Y%m%d%H%M%S"`
     if [[ $1 != "test" ]]; then
         /bin/umount /mnt/backup/s3
     fi
-    kdialog "Your S3 backup job has completed" 5
+    kdialog --passivepopup "Your S3 backup job has completed" 5
 
 Make it executable
 
@@ -717,4 +717,6 @@ Since this is a laptop, you can add this to anacron, so that it will run the nex
 
     sudo ln -s ~/src/scripts/s3backup.sh /etc/cron.weekly/s3backup
 
-Make sure not to include any periods in the symlink name in the cron folder.
+Make sure not to include any periods in the symlink name in the cron folder. You may need to edit `/etc/mstab` so that users have permissions to unmount this drive. Add the following line
+
+    s3fs /mnt/backup/s3 fuse.s3fs rw,noexec,nosuid,nodev,allow_other,user=skipper 0 0
