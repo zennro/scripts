@@ -4,7 +4,7 @@ This setup is for a freshly installed [Kubuntu 13.10](http://www.kubuntu.org/get
 
 ## Common Install
 
-    sudo apt-get install chromium-browser vim-gtk git build-essential gfortran xclip curl vlc kubuntu-restricted-extras konversation subversion mercurial conky thunderbird feh ubuntuone-control-panel-qt skype
+    sudo apt-get install chromium-browser vim-gtk git build-essential gfortran xclip curl vlc kubuntu-restricted-extras konversation subversion mercurial conky thunderbird feh ubuntuone-control-panel-qt skype gawk
 
 ## Laptop Only
 
