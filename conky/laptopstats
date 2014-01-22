@@ -187,6 +187,8 @@ SWAP: $alignc $swap / $swapmax $alignr $swapperc%
 ${color #a6a6a6}$swapbar$color
 / $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
 ${color #a6a6a6}${fs_bar /}$color
+data/ $alignc ${fs_used /media/data} / ${fs_size /media/data} $alignr ${fs_used_perc /media/data}%
+${color #a6a6a6}${fs_bar /media/data}$color
 
 ${color #000000}${font A bite:size=24}NETWORK
 ${voffset -31}${hr 2}$font $color

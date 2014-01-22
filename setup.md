@@ -52,6 +52,17 @@ Edit
 
 Add `blacklist ideapad_laptop`
 
+
+#### Second SSD
+
+Add this to `/etc/fstab`
+
+    /dev/sdb1 /media/data ntfs defaults 0 2
+
+Then
+
+    sudo chown -R skipper:skipper /media/data
+
 ## LaTeX
 
 This is a big install!
