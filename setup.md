@@ -10,7 +10,7 @@ This setup is for a freshly installed [Kubuntu 13.10](http://www.kubuntu.org/get
 
     sudo apt-get install powertop acpi
 
-## Lenovo Yoga 13 Only 
+## Lenovo Yoga 13 Only
 
 #### Wi-Fi and Bluetooth until supported by kernel
 
@@ -34,9 +34,9 @@ Edit
 
     sudo gvim /etc/default/grub
 
-Change 
+Change
 
-    GRUB_CMDLINE_LINUX_DEFAULT="quiet splash" 
+    GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
 
 to
 
@@ -177,7 +177,7 @@ Setup directory structure
 #### [LaTeX suite](http://vim-latex.sourceforge.net/) tools for vim
 
     git clone git://git.code.sf.net/p/vim-latex/vim-latex
-    
+
 #### [fugitive.vim](http://www.vim.org/scripts/script.php?script_id=2975): support for git in vim
 
     git clone https://github.com/tpope/vim-fugitive.git
@@ -356,7 +356,7 @@ For UMFPACK support
 Build/Install SciPy
 
     cd ~/src/scipy-skipper
-    cp ~/src/numpy-skipper/site.cfg 
+    cp ~/src/numpy-skipper/site.cfg
     python setup.py build
     sudo python setup.py install
 
@@ -438,7 +438,7 @@ Last Stable release
 
     git checkout 0.94.2
     sudo python setup.py install
-    
+
 [Setup your config file](http://star.mit.edu/cluster/docs/latest/quickstart.html) with SSH Keys, AWS Credentials, etc. [Setup for use with IPython](http://star.mit.edu/cluster/docs/latest/plugins/ipython.html#ipython-cluster-plugin).
 
 ## [seaborn](http://stanford.edu/~mwaskom/software/seaborn/): statistical data visualization
@@ -456,7 +456,7 @@ Last Stable release
 ### [NLTK](http://nltk.org/) Natural Language Toolkit
 
     sudo apt-get install libyaml-dev
-    pip install --user pyyaml nltk 
+    pip install --user pyyaml nltk
     cd ~/src/
     git clone https://github.com/japerk/nltk-trainer
     cd nltk-trainer
@@ -470,7 +470,7 @@ Fuzzy string matching library
     cd ~/src/
     pip install --user python-Levenshtein
     git clone https://github.com/seatgeek/fuzzywuzzy
-    cd fuzzywuzzy 
+    cd fuzzywuzzy
     python setup.py build
     sudo python setup.py install
 
@@ -626,7 +626,7 @@ Install the Python package
 
 Set it up
 
-    ./dropboxd 
+    ./dropboxd
 
 ## Autostart Scripts
 
@@ -700,7 +700,7 @@ Change its permissions
 
 Create a bucket using the AWS console or your tool of choice.
 
-Create a backup script. On KDE the `kdialog` command will send a notification to a user.
+Create a backup script. On KDE the `kdialog` command will send a notification to a user. To do so you need to specify an Xserver and Xauthority file.
 
     :::bash
     #! /bin/bash
@@ -712,6 +712,10 @@ Create a backup script. On KDE the `kdialog` command will send a notification to
         /usr/bin/s3fs your-bucket-name /mnt/backup/s3 -ouse_cache=/tmp
         BACKUP_DIR=/mnt/backup/s3/
     fi
+
+    export DISPLAY=:0
+    export XAUTHORITY=/home/skipper/.Xauthority
+
     kdialog --passivepopup "Your S3 backup job has started" 5
     /usr/bin/rsync -avrz --delete --inplace --stats --partial --log-file=log.file --exclude-from=/path/to/exclude --files-from=/path/to/include/backup.files /home/username/ $BACKUP_DIR
     mv log.file backup.log.`date +"%Y%m%d%H%M%S"`
@@ -722,12 +726,103 @@ Create a backup script. On KDE the `kdialog` command will send a notification to
 
 Make it executable
 
-    chmod +x ~/src/scripts/s3backup.sh
+    chmod +x ~/src/scripts/s3backup
 
 Since this is a laptop, you can add this to anacron, so that it will run the next time your machine is on according to some schedule. I added the following to `/etc/anacrontab`
 
     sudo ln -s ~/src/scripts/s3backup.sh /etc/cron.weekly/s3backup
 
-Make sure not to include any periods in the symlink name in the cron folder. You may need to edit `/etc/mstab` so that users have permissions to unmount this drive. Add the following line
+Make sure not to include any periods in the symlink name in the cron folder. That is, do NOT include a file ending. It won't be found by `run-parts`. You may need to edit `/etc/mstab` so that users have permissions to unmount this drive. Add the following line
 
     s3fs /mnt/backup/s3 fuse.s3fs rw,noexec,nosuid,nodev,allow_other,user=skipper 0 0
+
+## Postfix
+
+### Setup System Mail using postfix and gmail
+
+Only do this if you want to *send* mail using gmail. If you want a local setup, e.g. for sending mail sent to root to the local user see below.
+
+Install postfix and dependencies
+
+    sudo apt-get install postfix mailutils libsasl2-2 ca-certificates libsasl2-modules
+
+Select server as `Internet site`. It doesn't matter what you put for FQDN. `mail.example.com` will work for now or use your hostname. You can change this in `/etc/mailname` or by setting myhostname in `main.cf`.
+
+Open config file
+
+    sudo vim /etc/postfix/main.cf
+
+Add the following lines
+
+    relayhost = [smtp.gmail.com]:587
+    smtp_sasl_auth_enable = yes
+    smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+    smtp_sasl_security_options = noanonymous
+    smtp_tls_CAfile = /etc/postfix/cacert.pem
+    smtp_use_tls = yes
+
+Setup password
+
+    vim /etc/postfix/sasl_passwd
+
+Add the following line
+
+    [smtp.gmail.com]:587 USERNAME@gmail.com:PASSWORD
+
+Fix permissions and update postfix config to use sasl_passwd
+
+    sudo chmod 400 /etc/postfix/sasl_passwd
+    sudo postmap /etc/postfix/sasl_passwd
+
+You can remove the sasl_passwd file after running postmap. It creates a Berkeley DB file that it uses.
+
+Add certificates
+
+    cat /etc/ssl/certs/Thawte_Premium_Server_CA.pem | sudo tee -a /etc/postfix/cacert.pem
+
+Reload postfix config
+
+    sudo /etc/init.d/postfix reload
+
+Test it out
+
+    echo "Test mail from postfix" | mail -s "Test postfix" jsseabold@gmail.com
+
+### Setup System Mail using postfix and localhost
+
+Assuming postfix is installed already, make sure that `/etc/aliases` reads
+
+    # See man 5 aliases for format
+    postmaster:    root
+    root:   skipper
+
+If you have to, add the third line and run
+
+    sudo newaliases
+
+Then create a forward file
+
+    sudo gvim /root/.forward
+
+And add
+
+    skipper@skipper-lenovo
+
+Add your user to the mail group so Thunderbird can read the mail
+
+    sudo adduser $USER mail
+
+This should be all your need to do for forwarding mail. Let's test it out.
+
+    echo "Test mail from postfix" | mail -s "Test postfix" skipper@skipper-lenovo
+
+This message should show up in `/var/mail/skipper`.
+
+Now setup thunderbird, so you can read the mail there. Open thunderbird and go to preferences > account settings > account actions > add other account. Select Unix Mailspool. Set
+
+    Your Name: skipper
+    Email Address: skipper@skipper-lenovo
+
+Now finish this and edit the account settings for this account. Try to set the mail directory to `/var/mail/skipper`. It might not let you. It's not a big deal, apparently. Seems to work anyway.
+
+Now setup the smtp server. Fill in localhost for everything and set the port to 25. If you've previously set up gmail in Thunderbird, make sure you set the localhost to be the default outgoing SMTP server.
