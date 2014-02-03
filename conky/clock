@@ -37,7 +37,7 @@ text_buffer_size 2048
 
 uppercase no
 
-default_color 000000
+default_color FFFFFF
 
 TEXT
 ${voffset 10}${font Open Sans:size=30}${time %A}${font}${voffset -10}

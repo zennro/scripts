@@ -48,8 +48,7 @@ border_width 0
  
 # Default colors - fonts, eg.
 #default_color 626262 # grey
-#default_color FFFFFF
-default_color FFFFFF
+default_color FFFFFF # white
   
 # Text alignment, other possible values are commented
 alignment bottom_left
@@ -164,23 +163,23 @@ gap_y 65
 # stuff after 'TEXT' will be formatted on screen
  
 TEXT
-${color #000000}${font A bite:size=24}SYSTEM
-${voffset -30}${hr 2}$font$color
+${font A bite:size=24}SYSTEM
+${voffset -30}${hr 2}$font
 $sysname $kernel $alignr $machine
 Intel Core 2 Quad $alignr${freq_g cpu0}Ghz
 Uptime $alignr${uptime_short}
 File System $alignr${fs_type}
 
 ${voffset -15}
-${color #000000}${font A bite:size=24}PROCESSOR
-${voffset -30}${hr 2}$font $color
+${font A bite:size=24}PROCESSOR
+${voffset -30}${hr 2}$font 
 CPU1  ${cpu cpu0}% ${color #a6a6a6}${cpubar cpu0}$color
 CPU2  ${cpu cpu1}% ${color #a6a6a6}${cpubar cpu1}$color
 CPU3  ${cpu cpu2}% ${color #a6a6a6}${cpubar cpu2}$color
 CPU4  ${cpu cpu3}% ${color #a6a6a6}${cpubar cpu3}$color
 
-${color #000000} ${font A bite:size=24}FINITE
-${voffset -33}${hr 2}$font $color
+${font A bite:size=24}FINITE
+${voffset -33}${hr 2}$font
 RAM: $alignc $mem / $memmax $alignr $memperc%
 ${color #a6a6a6}$membar$color
 SWAP: $alignc $swap / $swapmax $alignr $swapperc%
@@ -190,8 +189,8 @@ ${color #a6a6a6}${fs_bar /}$color
 data/ $alignc ${fs_used /media/data} / ${fs_size /media/data} $alignr ${fs_used_perc /media/data}%
 ${color #a6a6a6}${fs_bar /media/data}$color
 
-${color #000000}${font A bite:size=24}NETWORK
-${voffset -31}${hr 2}$font $color
+${font A bite:size=24}NETWORK
+${voffset -31}${hr 2}$font
 External IP $alignr ${execi 600 wget http://automation.whatismyip.com/n09230945.asp -O - -q}
 IP on eth0 $alignr ${addr eth0}
 IP on wlan0 $alignr ${addr wlan0}
@@ -201,8 +200,8 @@ Total Downloads $alignr  ${totaldown wlan0}
 Total Uploads $alignr  ${totalup wlan0}
 
 ${voffset -15}
-${color #000000}${font A bite:size=24}AMAROK
-${voffset -31}${hr 2}$font $color
+${font A bite:size=24}AMAROK
+${voffset -31}${hr 2}$font
 ${if_running amarok}
 Status $alignr ${execi 5 ~/src/scripts/amarok -s}
 Track $alignr ${execi 5 ~/src/scripts/amarok -t}
