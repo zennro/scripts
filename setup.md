@@ -192,8 +192,11 @@ Setup directory structure
 
 #### [snipMate](http://www.vim.org/scripts/script.php?script_id=2540): TextMate style snippets for vim
 
+    cd ~/.vim/bundle
     git clone https://github.com/msanders/snipmate.vim
+    echo -e "# user-added" >> snipmate.vim/snippets/python.snippets
     echo -e "snippet ipdb\n\timport ipdb; ipdb.set_trace()" >> snipmate.vim/snippets/python.snippets
+    echo -e "snippet stop\n\traise ValueError('stop')" >> snipmate.vim/snippets/python.snippets
     # optional
     # cd ../
     # git clone https://github.com/scrooloose/snipmate-snippets snippets
@@ -224,6 +227,17 @@ After installing the Python modules you commonly use, update the autocomplete di
     python pydiction.py numpy scipy pandas statsmodels matplotlib sklearn
 
     cd ~
+
+#### [vim-flake8](https://github.com/nvie/vim-flake8): Pep-8 Checker
+
+    pip install --user flake8
+    cd ~/.vim/bundle/
+    git clone https://github.com/nvie/vim-flake8
+
+#### [syntastic](https://github.com/scrooloose/syntastic): Another option for syntax checking
+
+    cd ~/.vim/bundle/
+    git clone https://github.com/scrooloose/syntastic
 
 #### Custom ftplugins
 
