@@ -83,14 +83,7 @@ This is a big install!
 
 ## Git Config
 
-    git config --global user.email "your.email"
-    git config --global user.name "your name"
-    git config --global color.ui true
-    git config --global alias.recent 'log -n 10 --oneline --graph'
-    git config --global alias.st 'status -s'
-    git config --global merge.log true
-    git config --global merge.summary true
-    git config --global core.editor 'gvim --nofork'
+    ln -s ~/src/dotfiles/.gitconfig ~/.gitconfig
 
 ## Common Directories
 
