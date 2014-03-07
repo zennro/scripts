@@ -10,6 +10,25 @@ This setup is for a freshly installed [Kubuntu 13.10](http://www.kubuntu.org/get
 
     sudo apt-get install powertop acpi
 
+## SSD Performance
+
+This will be the default in Ubuntu 14.04, but for now make a cron job to run TRIM on your SSD.
+
+    sudo gvim /etc/cron.daily/trim
+
+Insert 
+
+    #!/bin/sh
+    LOG=/var/log/trim.log
+    echo "*** $(date -R) ***" >> $LOG
+    fstrim -v / >> $LOG
+    fstrim -v /home >> $LOG
+
+Make it executable
+
+    sudo chmod +x /etc/cron.daily/trim
+
+
 ## Lenovo Yoga 13 Only
 
 #### Wi-Fi and Bluetooth until supported by kernel
@@ -301,6 +320,14 @@ These are all packages I like to build from source to stay close to the bleeding
     cd src
     git clone git://github.com/xianyi/OpenBLAS
     cd OpenBLAS
+    
+Edit the Makefile.rule to have
+
+    NO_WARMUP=1
+    NO_AFFINITY=1
+
+Then
+
     make
     make PREFIX=~/.local/ install
 
@@ -525,7 +552,7 @@ Rprofile settings.
 
 Install some often used default packages
 
-    Rscript -e "install.packages(c('car', 'systemfit', 'plyr', 'stringr', 'ggplot2', 'RColorBrewer', 'vars', 'forecast', 'zoo', 'gtools', 'gamlr', 'distrom'))"
+    Rscript -e "install.packages(c('car', 'systemfit', 'plyr', 'stringr', 'ggplot2', 'RColorBrewer', 'vars', 'forecast', 'zoo', 'gtools', 'gamlr', 'distrom', 'robustbase'))"
 
 
 I like to have the source of some packages I use available to muck around in
