@@ -4,7 +4,7 @@ This setup is for a freshly installed [Kubuntu 13.10](http://www.kubuntu.org/get
 
 ## Common Install
 
-    sudo apt-get install chromium-browser vim-gtk git build-essential gfortran xclip curl vlc kubuntu-restricted-extras konversation subversion mercurial conky thunderbird feh ubuntuone-control-panel-qt skype gawk
+    sudo apt-get install chromium-browser vim-gtk git build-essential gfortran xclip curl vlc kubuntu-restricted-extras konversation subversion mercurial conky thunderbird feh ubuntuone-control-panel-qt skype gawk htop
 
 ## Laptop Only
 
@@ -250,6 +250,11 @@ After installing the Python modules you commonly use, update the autocomplete di
 
     cd ~/.vim/bundle/
     git clone https://github.com/scrooloose/syntastic
+
+#### [jedi-vim](https://github.com/davidhalter/jedi-vim): Jedi autocompletion library for vim
+
+    cd ~/.vim/bundle
+    git clone --recursive https://github.com/davidhalter/jedi-vim
 
 #### Custom ftplugins
 
