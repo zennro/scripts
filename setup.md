@@ -254,7 +254,12 @@ After installing the Python modules you commonly use, update the autocomplete di
 #### [jedi-vim](https://github.com/davidhalter/jedi-vim): Jedi autocompletion library for vim
 
     cd ~/.vim/bundle
-    git clone --recursive https://github.com/davidhalter/jedi-vim
+    git clone --recursive https://github.com/davidhalter/jedi-vim.git
+
+#### [vim-python-pep8-indent](https://github.com/hynek/vim-python-pep8-indent): A nicer Python indentation style for vim
+
+    cd ~/.vim/bundle
+    git clone https://github.com/hynek/vim-python-pep8-indent.git
 
 #### Custom ftplugins
 
