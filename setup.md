@@ -261,6 +261,13 @@ After installing the Python modules you commonly use, update the autocomplete di
     cd ~/.vim/bundle
     git clone https://github.com/hynek/vim-python-pep8-indent.git
 
+
+#### [autopep8](https://github.com/tell-k/vim-autopep8) Automatically applies pep8 changes
+
+    pip install --user autopep8
+    cd ~/.vim/bundle
+    git clone https://github.com/tell-k/vim-autopep8
+
 #### Custom ftplugins
 
 Add my own custom ftplugins that are kept on github
@@ -562,7 +569,7 @@ Rprofile settings.
 
 Install some often used default packages
 
-    Rscript -e "install.packages(c('car', 'systemfit', 'plyr', 'stringr', 'ggplot2', 'RColorBrewer', 'vars', 'forecast', 'zoo', 'gtools', 'gamlr', 'distrom', 'robustbase'))"
+    Rscript -e "install.packages(c('car', 'systemfit', 'plyr', 'stringr', 'ggplot2', 'RColorBrewer', 'vars', 'forecast', 'zoo', 'gtools', 'gamlr', 'distrom', 'robustbase', 'lubridate'))"
 
 
 I like to have the source of some packages I use available to muck around in
