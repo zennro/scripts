@@ -877,3 +877,15 @@ Now setup thunderbird, so you can read the mail there. Open thunderbird and go t
 Now finish this and edit the account settings for this account. Try to set the mail directory to `/var/mail/skipper`. It might not let you. It's not a big deal, apparently. Seems to work anyway.
 
 Now setup the smtp server. Fill in localhost for everything and set the port to 25. If you've previously set up gmail in Thunderbird, make sure you set the localhost to be the default outgoing SMTP server.
+
+## Setting up Flash
+
+Adobe stopped supporting Linux as of 11.2. The old plugins crash for me in chromium now. Chrome has Pepper, an API for a proprietary flash plugin. You can install Chrome Pepper in Chromium through a PPA. Rune the following
+
+    sudo add-apt-repository ppa:skunk/pepper-flash
+    sudo apt-get update
+    sudo apt-get install pepflashplugin-installer
+
+Then edit (with permission) `/etc/chromium-browser/default`. Past this at the bottom
+
+    . /usr/lib/pepflashplugin-installer/pepflashplayer.sh
