@@ -577,9 +577,9 @@ I like to have the source of some packages I use available to muck around in
     cd ~
     mkdir ~/src/R_packages && cd ~/src/R_packages
 
-    wget http://cran.r-project.org/src/contrib/plm_1.3-1.tar.gz
+    wget http://cran.r-project.org/src/contrib/plm_1.4-0.tar.gz
     Rscript -e "install.packages(c('bdsmatrix','Formula'))"
-    R CMD INSTALL plm_1.3-1.tar.gz
+    R CMD INSTALL plm_1.4-0.tar.gz
     tar -xvf plm*
 
     wget http://cran.r-project.org/src/contrib/textir_1.8-8.tar.gz
