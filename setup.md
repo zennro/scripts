@@ -620,11 +620,18 @@ Build/Install Gretl
 
 ## GIS
 
+    sudo apt-get install libgeos-3.3.3 libgeos-dev
+
     cd ~/src/
     git clone git://github.com/matplotlib/basemap matplotlib-basemap
+    cd matplotlib-basemap
+    export GEOS_DIR=/usr
+    python setup.py build
+    sudo python setup.py install
+    cd ~
+
     pip install --user geopy
 
-    sudo apt-get install libgeos-3.3.3
     pip install --user shapely
 
     pip install --user pyshp
