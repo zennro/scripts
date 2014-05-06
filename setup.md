@@ -569,7 +569,7 @@ Rprofile settings.
 
 Install some often used default packages
 
-    Rscript -e "install.packages(c('car', 'systemfit', 'plyr', 'stringr', 'ggplot2', 'RColorBrewer', 'vars', 'forecast', 'zoo', 'gtools', 'gamlr', 'distrom', 'robustbase', 'lubridate'))"
+    Rscript -e "install.packages(c('car', 'systemfit', 'plyr', 'stringr', 'ggplot2', 'RColorBrewer', 'vars', 'forecast', 'zoo', 'gtools', 'gamlr', 'distrom', 'robustbase', 'lubridate', 'maptpx'))"
 
 
 I like to have the source of some packages I use available to muck around in
