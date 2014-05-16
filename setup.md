@@ -138,6 +138,7 @@ This is a big install!
 
     git clone git@github.com:jseabold/dotfiles
     ln -s ~/src/dotfiles/.bashrc ~/
+    ln -s ~/src/dotfiles/.inputrc ~/
     ln -s ~/src/dotfiles/.vimrc ~/
     ln -s ~/src/dotfiles/.pystartup ~/
     sudo ln -s ~/src/scripts/clean_scratch.sh /etc/cron.weekly/clean_scratch
