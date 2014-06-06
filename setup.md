@@ -897,3 +897,42 @@ Adobe stopped supporting Linux as of 11.2. The old plugins crash for me in chrom
 Then edit (with permission) `/etc/chromium-browser/default`. Past this at the bottom
 
     . /usr/lib/pepflashplugin-installer/pepflashplayer.sh
+
+## Setting up Java
+
+Go to
+
+    https://www.java.com/en/download/manual.jsp?locale=en
+
+And download the latest source. Usually 32-bit as the only reason I need it is for host checker / juniper VPN client. You will need a 32-bit chromium for it to work, however. This is best done under a chroot environment unfortunately. Untar the tarball and move the whole directory to
+
+    /usr/java/
+
+Make symlinks for
+
+    /usr/java/jreXXX/lib/i386/libnpjp2.so
+
+in
+
+    /usr/lib/chromium-browser/plugins/
+
+by
+
+    sudo ln -s /usr/java/jreXXX/lib/i386/libnpjp2.so /usr/lib/chromium-browser/plugins/
+
+## Arduino
+
+    sudo apt-get install arduino-core picocom
+
+The [command line tool](http://inotool.org/)
+
+    git clone git://github.com/amperka/ino.git arduino-ino
+
+
+## Music Player
+
+PPA from Clementine developer.
+
+    sudo add-apt-repository ppa:me-davidsansome/clementine
+    sudo apt-get update
+    sudo apt-get install clementine
