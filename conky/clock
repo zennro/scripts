@@ -12,7 +12,10 @@ text_buffer_size 2048
 
 # Window specifications
 own_window yes
-own_window_type override
+own_window_class conky
+own_window_argb_visual true
+own_window_argb_value 0
+own_window_type normal
 own_window_transparent yes
 own_window_colour A0A0A0
 own_window_hints undecorate,below,sticky,skip_taskbar,skip_pager
@@ -37,7 +40,7 @@ text_buffer_size 2048
 
 uppercase no
 
-default_color FFFFFF
+default_color a6a6a6
 
 TEXT
 ${voffset 10}${font Open Sans:size=30}${time %A}${font}${voffset -10}
