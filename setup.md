@@ -269,6 +269,15 @@ After installing the Python modules you commonly use, update the autocomplete di
     cd ~/.vim/bundle
     git clone https://github.com/tell-k/vim-autopep8
 
+#### [taglist](http://vim-taglist.sourceforge.net/) Source code browser
+
+    sudo apt-get install exuberant-ctags
+
+This is a fork that has the latest version on github
+
+    cd ~/.vim/bundle
+    git clone https://github.com/emnh/taglist.vim
+
 #### Custom ftplugins
 
 Add my own custom ftplugins that are kept on github
