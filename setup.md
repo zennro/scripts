@@ -141,6 +141,7 @@ This is a big install!
     ln -s ~/src/dotfiles/.inputrc ~/
     ln -s ~/src/dotfiles/.vimrc ~/
     ln -s ~/src/dotfiles/.pystartup ~/
+    ln -s ~/src/dotfiles/.tmux.conf ~/
     sudo ln -s ~/src/scripts/clean_scratch.sh /etc/cron.weekly/clean_scratch
 
 Make sure not to include any periods in the symlink name in the cron folder.
