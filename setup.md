@@ -4,7 +4,7 @@ This setup is for a freshly installed [Kubuntu 13.10](http://www.kubuntu.org/get
 
 ## Common Install
 
-    sudo apt-get install chromium-browser vim-gtk git build-essential gfortran xclip curl vlc kubuntu-restricted-extras konversation subversion mercurial conky thunderbird feh ubuntuone-control-panel-qt skype gawk htop terminator tmux
+    sudo apt-get install chromium-browser vim-gtk git build-essential gfortran xclip curl vlc kubuntu-restricted-extras konversation subversion mercurial conky thunderbird feh ubuntuone-control-panel-qt skype gawk htop terminator tmux dtrx dstat mtr lftp
 
 ## Laptop Only
 
@@ -278,6 +278,23 @@ This is a fork that has the latest version on github
 
     cd ~/.vim/bundle
     git clone https://github.com/emnh/taglist.vim
+
+#### [C.vim](http://www.vim.org/scripts/script.php?script_id=213) C/C++ IDE
+
+    cd ~/.vim
+    wget http://www.vim.org/scripts/download_script.php?src_id=9679
+    unzip cvim.zip
+
+Edit `.vimrc` and add
+
+    let g:C_UseTool_cmake = 'yes'
+
+[Read more](http://www.thegeekstuff.com/2009/01/tutorial-make-vim-as-your-cc-ide-using-cvim-plugin/)
+
+#### [vim-coffee-script](https://github.com/kchmck/vim-coffee-script)
+
+    cd ~/.vim/bundle
+    git clone https://github.com/kchmck/vim-coffee-script
 
 #### Custom ftplugins
 
