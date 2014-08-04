@@ -6,6 +6,10 @@ This setup is for a freshly installed [Kubuntu 13.10](http://www.kubuntu.org/get
 
     sudo apt-get install chromium-browser vim-gtk git build-essential gfortran xclip curl vlc kubuntu-restricted-extras konversation subversion mercurial conky thunderbird feh ubuntuone-control-panel-qt skype gawk htop terminator tmux
 
+## [For USB Wireless Dongle (Netgear N300 WNA3100)]
+
+    http://faq.apollo3.com/ljames/ubuntu/networksupport/
+
 ## Laptop Only
 
     sudo apt-get install powertop acpi
@@ -167,6 +171,8 @@ Common keyboard shortcuts I use
     alt+k -> konsole
     alt+m -> move window
     meta+m -> minimize window
+    meta+x -> maximize
+    ctrl+shit+up -> maximize vertically
 
 ## Vim Setup
 
@@ -211,6 +217,7 @@ Setup directory structure
     echo -e "# user-added" >> snipmate.vim/snippets/python.snippets
     echo -e "snippet ipdb\n\timport ipdb; ipdb.set_trace()" >> snipmate.vim/snippets/python.snippets
     echo -e "snippet stop\n\traise ValueError('stop')" >> snipmate.vim/snippets/python.snippets
+    echo -e "snippet home\n\t'/home/skipper/'" >> snipmate.vim/snippets/python.snippets
     # optional
     # cd ../
     # git clone https://github.com/scrooloose/snipmate-snippets snippets
@@ -426,7 +433,8 @@ Build/Install SciPy
 
     pip install --user pyparsing
     pip install --user python-dateutil
-    sudo apt-get install dvipng
+    sudo apt-get install dvipng libfreetype6-dev 
+    cd ~/src/matplotlib
     python setup.py build
     sudo python setup.py install
 
@@ -453,7 +461,7 @@ Excel Support
 
 [PyTables](http://www.pytables.org/moin) (depends on NumExpr): package for managing hierarchical datasets and designed to efficiently and easily cope with extremely large amounts of data.
 
-    sudo apt-get install libhdf5-dev liblzo2-dev libbz2-dev
+    sudo apt-get install libhdf5-dev liblzo2-dev libbz2-dev libsnappy-dev
     cd ~/src/
     git clone git://github.com/PyTables/PyTables
     cd PyTables
@@ -905,7 +913,7 @@ Adobe stopped supporting Linux as of 11.2. The old plugins crash for me in chrom
     sudo apt-get update
     sudo apt-get install pepflashplugin-installer
 
-Then edit (with permission) `/etc/chromium-browser/default`. Past this at the bottom
+Then edit (with permission) `/etc/chromium-browser/default`. Paste this at the bottom
 
     . /usr/lib/pepflashplugin-installer/pepflashplayer.sh
 
